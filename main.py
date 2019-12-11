@@ -20,11 +20,12 @@ class App:
         #######################
         '''Creating Widgets'''
         #######################
-        tk.Label(self.app, text="Enter the user's handle").pack()
-        tk.Entry(self.app, textvariable=self.string_var).pack()
+        tk.Label(self.app, text="").grid(row=0)
+        tk.Label(self.app, text="Enter the user's handle:").grid(row=1)
+        tk.Entry(self.app, textvariable=self.string_var).grid(row=1, column=1, padx=(15, 10))
         self.button = tk.Button(self.app, command=self.print_res, textvariable=self.button_text)
         self.button_text.set('Get Results!')
-        self.button.pack()
+        self.button.grid(row=2)
         #######################
         '''Creating Labels'''
         #######################
@@ -32,7 +33,8 @@ class App:
         self.StringVars = [tk.StringVar() for _ in range(len(self.Label_Names))]
         for i, label in enumerate(self.Label_Names):
             self.Labels.append(tk.Label(self.app, textvariable=self.StringVars[i]))
-            self.Labels[i].pack() #Packing 'em
+            tk.Label(self.app, text=self.Label_Names[i]+":").grid(row=3+i, column=0)
+            self.Labels[i].grid(row=3+i, column=1) #Packing 'em
         #######################
         self.app.mainloop()
 
@@ -42,7 +44,7 @@ class App:
             self.StringVars[0].set('Can\'t find details of the given handle.')
         else:
             for i in range(len(self.Label_Names)):
-                self.StringVars[i].set(f'{self.Label_Names[i]}: {details[i]}')
+                self.StringVars[i].set(f'{details[i]}')
 
     def user_details(self, handle):
         try:
