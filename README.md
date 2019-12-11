@@ -6,4 +6,4 @@ A wrapper made around the code forces api to fetch some results.
 <h1>To Run </h1>
 Run: python3 -m CodeForceGCI 
 
-<img src="ss.png" />
+<img src="ss_1.png" />
